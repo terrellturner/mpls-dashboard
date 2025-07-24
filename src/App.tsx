@@ -9,35 +9,53 @@ import "./App.css";
 import useCrimeStats from "../hooks/useCrimeStats";
 import useNonEmergencyStats from "../hooks/useNonEmergencyStats";
 import usePoliceIncidentStats from "../hooks/usePoliceIncidentsStats";
+import useConfirmedFireStats from "../hooks/useConfirmedFireStats";
+import useConstructionPermitStats from "../hooks/useConstructionPermitStats";
 
 function App() {
   const crimeStats = useCrimeStats();
   const nonEmergencyStats = useNonEmergencyStats();
   const policeIncidentStats = usePoliceIncidentStats();
+  const confirmedFireStats = useConfirmedFireStats();
+  const constructionPermitValueStats = useConstructionPermitStats();
 
   const statConfigs = [
     {
       id: "crime-total",
-      label: "🗒️ Total Crimes Reported ",
+      label: "👮 Crimes Reported ",
       ...crimeStats,
     },
     {
       id: "non-emergency-incidents",
-      label: "ℹ️ Total 311 Calls ",
+      label: "ℹ️ 311 Calls ",
       ...nonEmergencyStats,
     },
     {
       id: "police-incidents",
-      label: "🚔 Total Police Incidents ",
+      label: "🚔 Police Incidents ",
       ...policeIncidentStats,
+    },
+    {
+      id: "confirmed-fires",
+      label: "🔥 Confirmed Fires",
+      ...confirmedFireStats,
+    },
+    {
+      id: "construction-value",
+      label: "🏗️ Construction Permit Value",
+      ...constructionPermitValueStats,
     },
   ];
 
   return (
     <main className="flex relative justify-center p-10 lowercase items-center bg-[url(/imgs/minneapolis.jpg)] bg-cover bg-center grow h-full text-stone-300">
       <div className="h-full w-full absolute top-0 left-0 backdrop-blur-lg z-10"></div>
-      <article className="p-6 z-50 rounded-lg border border-stone-300 w-full max-w-4xl bg-stone-800/30 backdrop-blur-sm bg-opacity-10">
-        <h1 className="text-4xl m-5 text-stone-50">mpls hub🌾🏙️</h1>
+      <article className="text-stone-50 p-6 z-50 rounded-lg border border-stone-300 w-full max-w-4xl bg-stone-800/30 backdrop-blur-sm bg-opacity-10">
+        <h1 className="text-4xl m-5 ">mpls now🌾🏙️</h1>
+        <h2 className="m-5">
+          A live snapshot of vital Minneapolis stats from the past 7 days,
+          pulled from OpenDataMpls.
+        </h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
           <Card className="h-full aspect-square justify-around w-full bg-indigo-300/20 text-stone-50 border-stone-300">
             <CardHeader>
